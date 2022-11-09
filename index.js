@@ -8,10 +8,8 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-console.log(process.env.DB_USER)
-console.log(precess.env.DB_PASSWORD)
 
-const uri = `mongodb+srv://:<password>@cluster0.panqagk.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${precess.env.DB_PASSWORD}@cluster0.panqagk.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
